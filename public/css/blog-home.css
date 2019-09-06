@@ -1,0 +1,24 @@
+/*!
+ * Start Bootstrap - Blog Home (https://startbootstrap.com/template-overviews/blog-home)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-blog-home/blob/master/LICENSE)
+ */
+body {
+  padding-top: 56px;
+}
+
+.bg-dark {
+  background-color: #006D5B !important;
+}
+
+.btn-primary{
+  color: #fff;
+  background-color: #00C9A8;
+  border-color: #00C9A8;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #009B81;
+  border-color: #009B81;
+}
