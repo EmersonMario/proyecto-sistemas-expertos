@@ -1,0 +1,21 @@
+{
+  "name": "tylox",
+  "version": "1.0.0",
+  "description": "Tylox CMS Application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Émerson Izaguirre",
+  "license": "ISC",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "express-session": "^1.16.2",
+    "flash": "^1.1.0",
+    "handlebars": "^4.1.2",
+    "mongoose": "^5.6.7",
+    "path": "^0.12.7"
+  }
+}
