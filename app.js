@@ -8,7 +8,10 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var {mongoDbUrl, PORT} = require('./config/configuration');
 var {globalVariables} = require('./config/configuration');
-
+var methodOverride = require('method-override');
+var {selectOption} = require('./config/customFunctions');
+var fileUpload = require('express-fileupload');
+var passport = require('passport');
 
 /*Configuración de mongoose para conectar a MongoDB*/
 mongoose.connect(mongoDbUrl, {useNewUrlParser: true}).then(
@@ -36,12 +39,23 @@ app.use(session({
 }));
 
 app.use(flash());
+
+/* Passport Initialize */
+app.use(passport.initialize());
+app.use(passport.session());
+
+/*Para Usar Variables Globales*/
 app.use(globalVariables);
 
+/*File Upload*/
+app.use(fileUpload());
 
 /*Configuración del motor de vistas para usar handlebars*/
-app.engine('handlebars', hbs({defaultLayout: 'default'}));
+app.engine('handlebars', hbs({defaultLayout: 'default', helpers: {select: selectOption}}));
 app.set('view engine', 'handlebars');
+
+/*Method Override*/
+app.use(methodOverride('newMethod'));
 
 /*Rutas*/
 var defaultRoutes = require("./routes/defaultRoutes");
