@@ -5,17 +5,35 @@ const PostSchema = new Schema({
         type: String,
         required: true
     },
-    autor: {
+    user: {
         type: String,
         required: true
     },
-    category: {
+    file: {
         type: String,
-        required: true
+        default: ''
+    },
+    category: {
+        type: Schema.Types.ObjectId,
+        ref: 'category',
+    },
+    comments: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'comment'
+        }
+    ],
+    allowComments: {
+        type: Boolean,
+        default: false
     },
     creationDate: {
         type: Date,
         default: Date.now()
+    },
+    content: {
+        type: String,
+        required: true
     }
 });
 
