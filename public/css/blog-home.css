@@ -5,6 +5,7 @@
  */
 body {
   padding-top: 56px;
+  background: linear-gradient(to bottom right, #009B81 0%, #00C9A8 100%);
 }
 
 .bg-dark {
@@ -13,12 +14,58 @@ body {
 
 .btn-primary{
   color: #fff;
-  background-color: #00C9A8;
+  background-color: #009B81;
   border-color: #00C9A8;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #009B81;
+  background-color: #006D5B;
   border-color: #009B81;
+}
+
+.card-body {
+  background-color: #00C9A8;
+  color: #FFF;
+}
+
+/*Efecto del titulo*/
+h1 {
+  cursor: default;
+  position: relative;
+  top: 5px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 10px;
+  margin: auto;
+  display: block;
+  -webkit-animation: bounce .8s ease infinite alternate;
+  
+  
+  color: #FFF;
+  text-align: center;
+  line-height: 10px;
+  text-shadow: 0 1px 0 #CCC,
+               0 2px 0 #CCC,
+               0 3px 0 #CCC,
+               0 4px 0 #CCC,
+               0 5px 0 #CCC,
+               0 8px 0 transparent,
+               0 9px 0 transparent,
+               0 10px 10px rgba(0, 0, 0, .6);
+}
+/* ANIMATION */
+@-webkit-keyframes bounce {
+  100% {
+    top: -30px;
+    
+    text-shadow: 0 1px 0 #CCC,
+                 0 2px 0 #CCC,
+                 0 3px 0 #CCC,
+                 0 4px 0 #CCC,
+                 0 5px 0 #CCC,
+                 0 6px 0 #CCC,
+                 0 30px 30px rgba(0, 0, 0, 0.644);
+  }
 }

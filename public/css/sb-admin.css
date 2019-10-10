@@ -4452,7 +4452,7 @@ input[type="button"].btn-block {
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
-  font-size: 1.25rem;
+  font-size: 2rem;
   line-height: inherit;
   white-space: nowrap;
 }
@@ -10683,7 +10683,14 @@ body {
 .sidebar .nav-item .nav-link {
   text-align: center;
   padding: 0.75rem 1rem;
-  width: 90px;
+  width: 900px;
+}
+
+@media (max-width: 800px) {
+  .sidebar .nav-item .nav-link {
+    text-align: left;
+    width: 100px;
+  }
 }
 
 .sidebar .nav-item .nav-link span {
@@ -10723,17 +10730,17 @@ body {
 
 @media (min-width: 768px) {
   .sidebar {
-    width: 225px !important;
+    width: 300px !important;
   }
   .sidebar .nav-item .nav-link {
     display: block;
     width: 100%;
     text-align: left;
     padding: 1rem;
-    width: 225px;
+    width: 255px;
   }
   .sidebar .nav-item .nav-link span {
-    font-size: 1rem;
+    font-size: 1.2rem;
     display: inline;
   }
   .sidebar .nav-item .dropdown-menu {
@@ -10902,7 +10909,7 @@ footer.sticky-footer .copyright {
 
 @media (min-width: 768px) {
   footer.sticky-footer {
-    width: calc(100% - 225px);
+    width: calc(100% - 257px);
   }
 }
 
@@ -10915,3 +10922,220 @@ body.sidebar-toggled footer.sticky-footer {
     width: calc(100% - 90px);
   }
 }
+
+/*Todo para el efecto de cubos*/
+.wrapper {
+  background: #00C9A8;
+  background: linear-gradient(to bottom right, #009B81 0%, #00C9A8 100%);
+}
+
+.bg-bubbles {
+  position: absolute;
+  bottom: 5%;
+  left: 0;
+  width: 20%;
+  z-index: 1;
+}
+
+
+.bg-bubbles li {
+  position: absolute;
+  list-style: none;
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.15);
+  
+  -webkit-animation: square 25s infinite;
+  animation: square 25s infinite;
+  transition-timing-function: linear;
+}
+
+
+.bg-bubbles li:nth-child(1) {
+  left: 10%;
+}
+.bg-bubbles li:nth-child(2) {
+  left: 20%;
+  width: 50px;
+  height: 50px;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-duration: 17s;
+          animation-duration: 17s;
+}
+.bg-bubbles li:nth-child(3) {
+  left: 25%;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+.bg-bubbles li:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  -webkit-animation-duration: 22s;
+          animation-duration: 22s;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+.bg-bubbles li:nth-child(5) {
+  left: 70%;
+}
+.bg-bubbles li:nth-child(6) {
+  left: 80%;
+  width: 20px;
+  height: 20px;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.bg-bubbles li:nth-child(7) {
+  left: 32%;
+  width: 60px;
+  height: 60px;
+  -webkit-animation-delay: 7s;
+          animation-delay: 7s;
+}
+.bg-bubbles li:nth-child(8) {
+  left: 55%;
+  width: 20px;
+  height: 20px;
+  -webkit-animation-delay: 15s;
+          animation-delay: 15s;
+  -webkit-animation-duration: 40s;
+          animation-duration: 40s;
+}
+.bg-bubbles li:nth-child(9) {
+  left: 25%;
+  width: 10px;
+  height: 10px;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-duration: 40s;
+          animation-duration: 40s;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.bg-bubbles li:nth-child(10) {
+  left: 90%;
+  width: 30px;
+  height: 30px;
+  -webkit-animation-delay: 11s;
+          animation-delay: 11s;
+}
+@-webkit-keyframes square {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-700px) rotate(600deg);
+            transform: translateY(-700px) rotate(600deg);
+  }
+}
+@keyframes square {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-1400px) rotate(600deg);
+            transform: translateY(-1400px) rotate(600deg);
+  }
+}
+/*Aquí termina el efecto cubo*/
+
+
+/*Efecto del titulo*/
+h1 {
+  cursor: default;
+  position: relative;
+  top: 5px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 10px;
+  margin: auto;
+  display: block;
+  -webkit-animation: bounce .8s ease infinite alternate;
+  
+  
+  color: #FFF;
+  text-align: center;
+  line-height: 10px;
+  text-shadow: 0 1px 0 #CCC,
+               0 2px 0 #CCC,
+               0 3px 0 #CCC,
+               0 4px 0 #CCC,
+               0 5px 0 #CCC,
+               0 8px 0 transparent,
+               0 9px 0 transparent,
+               0 10px 10px rgba(0, 0, 0, .6);
+}
+/* ANIMATION */
+@-webkit-keyframes bounce {
+  100% {
+    top: -30px;
+    
+    text-shadow: 0 1px 0 #CCC,
+                 0 2px 0 #CCC,
+                 0 3px 0 #CCC,
+                 0 4px 0 #CCC,
+                 0 5px 0 #CCC,
+                 0 6px 0 #CCC,
+                 0 30px 30px rgba(0, 0, 0, 0.644);
+  }
+}
+
+/*Efecto para el logo principal*/
+.tdimension {
+	width: 400px;
+	margin: 20px auto 40px auto;
+	perspective: 400px;
+}
+.tdimension img {
+	display: block;
+	width: 400px;
+	height: 400px;
+	background: url("/uploads/logo.png");
+	background-repeat: no-repeat;
+  background-size: 400px 400px;
+	transform-style: preserve-3d;
+	transform: rotateX(50deg);
+	transition: all 0.8s;	
+}
+.tdimension:hover img {
+	transform: rotateX(10deg); 	
+}	
+.tdimension img:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(#009B81, #00C9A8);    
+   	transform: rotateX(90deg);
+    transform-origin: bottom;
+}
+/*Aquí termina el efecto del logo principal*/
+
+/*Para los input file*/
+#customFile .custom-file-control:lang(en)::after {
+  content: "Select file...";
+}
+
+#customFile .custom-file-control:lang(en)::before {
+  content: "Click me";
+}
+
+/*when a value is selected, this class removes the content */
+.custom-file-control.selected:lang(en)::after {
+  content: "" !important;
+}
+
+.custom-file {
+  overflow: hidden;
+}
+.custom-file-control {
+  white-space: nowrap;
+}
+/*Aquí termina lo de input file*/
