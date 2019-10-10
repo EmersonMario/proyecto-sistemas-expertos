@@ -1,0 +1,108 @@
+<div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+            <!-- Title -->
+            <h1 class="mt-5 mb-5">{{post.title}}</h1>
+
+            <hr>
+
+            <!-- Preview Image -->
+            <img class="img-fluid rounded" src="../{{post.file}}">
+            
+            <hr>
+
+            <!-- Post Content -->
+            
+            <div class="lead" id="post-content-db" hidden>{{post.content}}</div>
+            <div class="lead text-white" id="post-content"></div>
+            <script>
+                let html = document.getElementById("post-content-db").innerText;
+                let fragmentFromString = function (strHTML) {
+                    return document.createRange().createContextualFragment(strHTML);
+                }
+                let fragment = fragmentFromString(html);
+                document.getElementById("post-content").appendChild(fragment);
+            </script>
+            <hr>
+
+            <!-- Author -->
+            <p class="lead text-white">
+                Posteado por {{post.user}}
+            </p>
+            <hr>
+            
+            <!-- Date/Time -->
+            <p class="text-white">Redacción</p>
+            <p class="text-white">{{post.creationDate}}</p>
+            <hr>
+
+            <!-- Comments Form -->
+            {{#if post.allowComments}}
+            <div class="card my-4">
+                <h5 class="card-header">Deja un Comentario:</h5>
+                <div class="card-body">
+                    <form action="/post/{{post._id}}" method="post">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3" name="comment_body"></textarea>
+                            <input type="hidden" name="id" value="{{post._id}}">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Publicar</button>
+                    </form>
+                </div>
+            </div>
+            {{/if}}
+
+            <!-- Single Comment -->
+
+            {{#each post.comments}}
+                {{#if commentIsApproved}}
+                    <div class="media mb-4">
+                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                        <div class="media-body text-white">
+                            <h5 class="mt-0">{{user.firstName}} {{user.lastName}}</h5>
+                           {{body}}
+                        </div>
+                    </div>
+                {{/if}}
+            {{/each}}
+            
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+           <!-- Side Widget -->
+            <div class="card my-4">
+                {{#each configurations}}
+                <h5 class="card-header">{{pageTitle}}</h5>
+                <div class="card-body text-center">
+                    <img src="/{{fileLogo}}" alt="Logotipo" class="img-fluid" style="height: 200px;">
+                    <p>{{pageDescription}}</p>
+                </div>
+                {{/each}}
+            </div>
+
+            <!-- Categories Widget -->
+            <div class="card my-4">
+            <h5 class="card-header">Categorías</h5>
+            <div class="card-body">
+                <div class="row">
+                <div class="col-lg-6">
+                    <ul class="list-unstyled mb-0">
+                    {{#each categories}}
+                    <li>
+                        <a href="#">{{title}}</a>
+                    </li>
+                    {{/each}}
+                    </ul>
+                </div>
+                </div>
+            </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.row -->

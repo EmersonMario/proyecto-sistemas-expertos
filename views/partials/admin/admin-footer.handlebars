@@ -50,7 +50,68 @@
 
   <!-- Custom scripts for all pages-->
   <script src="/js/sb-admin.min.js"></script>
+  <script src="/js/editor.js"></script>
 
   <!-- Demo scripts for this page-->
   <script src="/js/demo/datatables-demo.js"></script>
   <script src="/js/demo/chart-area-demo.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      setTimeout(function(){
+        $('.auto-hide').slideUp(300);
+      }, 3000);
+
+      $("#create-category-button").on('click', function(e){
+        e.preventDefault();
+        var data = $("#category-title").val();
+
+        $.ajax({
+          url: '/admin/category',
+          type: 'POST',
+          data: {name: data},
+          success: function(respuesta){
+            var html = `<tr>
+                          <td>${respuesta.title}</td>
+                          <td class="d-flex justify-content-center">
+                              <a href="/admin/category/edit/${respuesta.id}" class="btn btn-lg btn-outline-warning mr-2" role="button">Editar</a>
+                              <form action="/admin/category/${respuesta.id}?newMethod=DELETE" method="POST">
+                                  <button class="btn btn-lg btn-danger" type="submit">Eliminar</button>
+                              </form>
+                          </td>
+                        </tr>`
+                        $(".category-list").append(html);
+          }
+        });
+
+
+      });
+
+      $("#update-category-button").on('click', function(e){
+        e.preventDefault();
+        var data = $("#category-title").val();
+        var id = $("#category-id").val();
+
+        $.ajax({
+          url: `/admin/category/edit/${id}`,
+          type: 'POST',
+          data: {name: data},
+          success: function(respuesta){
+            window.location.href = respuesta.url;
+          }
+        });
+      });
+
+    });
+
+   /*Para cargar el editor Wysiwyg*/
+$(document).ready(function(){
+    $('#content').Editor();
+
+    $('#send-content').mouseover(function(e){
+      e.preventDefault();
+      $('#content').text($('#content').Editor('getText'));
+    });
+  });
+
+  </script>

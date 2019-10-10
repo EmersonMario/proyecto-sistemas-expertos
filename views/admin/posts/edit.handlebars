@@ -1,12 +1,12 @@
 <div class="container">
-    <h1 class="mb-5 p-3 text-center text-white">Crear un Nuevo Post</h1>
+    <h1 class="mb-5 p-3 text-center text-white">Editar Post</h1>
 
     <div class="row p-4">
         <div class="col-md-12">
-            <form action="/admin/posts/create" method="POST" enctype="multipart/form-data" id="frm-test">
+            <form action="/admin/posts/edit/{{post._id}}?newMethod=PUT" method="POST">
                 <div class="form-group mb-5">
                     <label for="title" class="text-white">Título</label>
-                    <input type="text" name="title" id="title" class="form-control" placeholder="Escriba el tíitulo del post" required>
+                    <input type="text" name="title" id="title" class="form-control" placeholder="Escriba el tíitulo del post" required value={{post.title}}>
                 </div>
                 <div class="form-group mb-5">
                     <label for="content" class="text-white">Contenido</label>
@@ -21,28 +21,30 @@
                             <span class="input-group-text" id="inputGroupFileAddon01">Subir</span>
                         </div>
                         <div class="custom-file">
-                            <input type="file" class="form-control custom-file-input" id="inputGroupFile01" name="uploadedFile" aria-describedby="inputGroupFileAddon01">
+                            <input type="file" class="form-control custom-file-input" id="inputGroupFile01" name="uploadedFileEdit" aria-describedby="inputGroupFileAddon01">
                             <label class="custom-file-label" for="inputGroupFile01">Escoja una imagen</label>
                         </div>
                     </div>
                 </div>
-                <div class="form-group mb-5 text-white">
+                <div class="form-group text-white mb-5">
                     <label for="category">Categoría</label>
                     <select name="category" id="category" class="form-control">
-                        <option disabled selected>Seleccione una categoría</option>
-                        {{#each categories}}
-                            <option value="{{_id}}">{{title}}</option>    
-                        {{/each}}    
+                        {{#select post.category}}
+                            {{#each categories}}
+                                <option value="{{_id}}">{{title}}</option> 
+                            {{/each}}   
+                        {{/select}}    
                     </select>
-                </div>
-                <div class="form-check mb-5 text-white">
+                </div>  
+
+                <div class="form-check text-white mb-5">
                     <label for="allowComments">
-                        <input type="checkbox" name="allowComments" id="allowComments" class="form-check-input">
+                        <input type="checkbox" name="allowComments" id="allowComments" class="form-check-input" checked value="true">
                         Permitir Comentarios
                     </label>
                 </div>
 
-                <button class="btn btn-outline-warning btn-lg mb-5" type="submit" id="send-content">Crear Post</button>
+                <button class="btn btn-outline-warning btn-lg mb-5" type="submit" id="send-content">Actualizar Post</button>
 
             </form>
         </div>

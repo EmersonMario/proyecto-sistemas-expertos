@@ -1,0 +1,85 @@
+<div class="container">
+    <h1 class="mb-5 p-3 text-center text-white">Configuraciones del Sitio</h1>
+    <div class="row">
+        <div class="col-12 mx-auto">
+            <table class="table table-bordered text-center text-white table-striped">
+                <thead class="bg-dark">
+                <tr>
+                    <th><h2>Editar</h2></th>
+                    <th><h2>Acciones</h2></th>
+                    <th><h2>Previsualización</h2></th>
+                </tr>
+                </thead>
+                <tbody class="table-hover category-list">
+                    <tr>
+                        <td><h5 class="mt-4">Favicon</h5></td>
+                        <td class="justify-content-center">
+                            <form action="/admin/configuration/editFavicon/?newMethod=PUT" method="POST" enctype="multipart/form-data">
+                                <div class="input-group">
+                                    <input type="file" class="custom-file-input" id="customFile1" name="fileFavicon" aria-describedby="fileHelp">
+                                    <label class="custom-file-label" for="customFile1"><span style="opacity: 0.5;">Ejemplo: .ico, .jpg o .png</span></label> 
+                                </div>
+                                <button class="btn btn-outline-warning mt-3" type="submit">Cambiar</button>
+                            </form>
+                        </td>
+                        <td><img class="img-fluid rounded" style="width: 100px; height: 80px;" src="../uploads/favicon.ico"></td>
+                    </tr>
+                    <tr>
+                        <td><h5 class="mt-4">Logotipo</h5></td>
+                        <td class="justify-content-center">
+                            <form action="/admin/configuration/editLogo/?newMethod=PUT" method="POST" enctype="multipart/form-data">
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="customfile2" name="fileLogo" aria-describedby="fileHelp">
+                                        <label class="custom-file-label" for="customFile2"><span style="opacity: 0.5;">Ejemplo: .jpg, .png, .gif</span></label>
+                                    </div>
+                                </div>
+                            <button class="btn btn-outline-warning mt-3" type="submit">Cambiar</button>
+                            </form>
+                        </td>
+                        <td><img class="img-fluid rounded" style="width: 100px; height: 80px;" src="../uploads/logo.png"></td>
+                    </tr>
+                    <tr>
+                        <td><h5 class="mt-4">Título de la página</h5></td>
+                        <td class="justify-content-center">
+                            <form action="/admin/configuration/editPageTitle/?newMethod=PUT" method="POST" enctype="multipart/form-data">
+                                <input type="text" class="form-control" name="pageTitle" id="pageTitle" placeholder="Escriba el nuevo título">
+                                <button class="btn btn-outline-warning mt-1" type="submit">Cambiar</button>
+                            </form>
+                        </td>
+                        {{#each configurations}}
+                        <td id="tdPageTitle">{{pageTitle}}</td>
+                        {{/each}}
+                        
+                    </tr>
+                    <tr>
+                        <td><h5 class="mt-4">Descripción</h5></td>
+                        <td class="justify-content-center">
+                            <form action="/admin/configuration/editPageDescription/?newMethod=PUT" method="POST" enctype="multipart/form-data">
+                                <input type="text" class="form-control" name="pageDescription" placeholder="Escriba la nueva descripción">
+                                <button class="btn btn-outline-warning mt-1" type="submit">Cambiar</button>
+                            </form>
+                        </td>
+                        {{#each configurations}}
+                        <td>{{pageDescription}}</td>
+                        {{/each}}
+                    </tr>
+                    <tr>
+                        <td><h5 class="mt-4">Palabras clave</h5></td>
+                        <td class="justify-content-center">
+                            <form action="/admin/configuration/editPageKeyWords/?newMethod=PUT" method="POST" enctype="multipart/form-data">
+                                <input type="text" class="form-control" name="pageKeyWords" placeholder="Escriba las nuevas palabras clave separadas por una coma">
+                                <button class="btn btn-outline-warning mt-1" type="submit">Cambiar</button>
+                            </form>
+                        </td>
+                        {{#each configurations}}
+                        <td>{{pageKeyWords}}</td>
+                        {{/each}}
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+

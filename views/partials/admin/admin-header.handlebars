@@ -6,10 +6,15 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>CMS - Administrador de Tylox</title>
+  {{#configurations}}
+  <meta name="description" content="{{pageDescription}}">
+  <meta name="keywords" content="{{pageKeyWords}}">
+  <title>{{pageTitle}}</title>
+  {{/configurations}}
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  
+  <!-- Favicon-->
+  <link rel="shortcut icon" href="/uploads/favicon.ico" type="image/x-icon">
 
   <!-- Custom fonts for this template-->
   <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,5 +24,9 @@
 
   <!-- Custom styles for this template-->
   <link href="/css/sb-admin.css" rel="stylesheet">
+  <link href="/css/editor.css" rel="stylesheet">
+  
+  <!-- My css-->
+  <link href="/css/my-css.css" rel="stylesheet">
 
 </head>

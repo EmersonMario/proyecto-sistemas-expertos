@@ -1,0 +1,44 @@
+<div class="container">
+    <h1 class="mb-5 p-3 text-white text-center">Edición de Categorías</h1>
+    <div class="row">
+        <div class="col-6 mx-auto">
+            <table class="table table-bordered text-center border-success text-white">
+                <thead class="bg-dark">
+                <tr>
+                    <th><h3>Título</h3></th>
+                    <th><h3>Acciones</h3></th>
+                </tr>
+                </thead>
+                <tbody class="table-hover category-list">
+                {{#each categories}}
+                    <tr>
+                        <td>{{title}}</td>
+                        <td class="d-flex justify-content-center">
+                            <a href="/admin/category/edit/{{id}}" class="btn btn-lg btn-outline-warning mr-2" role="button">Editar</a>
+                            <form action="/admin/category/{{id}}?newMethod=DELETE" method="POST">
+                                <button class="btn btn-lg btn-danger" type="submit">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row p-4">
+        <div class="col-md-4">
+                <div class="form-group">
+                    <label for="title" class="text-white"><h3>Editar Categoría</h3></label>
+                    <input type="text" class="form-control" id="category-title" name="title" value="{{category.title}}">
+                    <input type="hidden" class="form-control" id="category-id" name="id" value="{{category._id}}">
+                </div>
+                    <button class="btn btn-outline-warning btn-lg" id="update-category-button">Actualizar Categoría</button>
+        </div>
+    </div>
+
+
+</div>

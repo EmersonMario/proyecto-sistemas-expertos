@@ -1,0 +1,35 @@
+<div class="container">
+        <h1 class="mb-5 p-3 text-center text-white">Todas las Plantillas</h1>
+    {{#if templates}}
+    <table class="table table-bordered">
+        <thead class="bg-dark">
+            <tr class="text-white text-center">
+                <th><h3>Título</h3></th>
+                <th><h3>Descripción</h3></th>
+                <th><h3>Acciones</h3></th>
+            </tr>
+        </thead>
+        <tbody class="text-center text-white">
+            
+            {{#each templates}}
+                <tr>
+                    <td>{{title}}</td>
+                    <td>{{description}}</td>
+                    <td>
+                        <form action="/admin/template/edit/{{id}}?newMethod=PUT" method="POST">
+                            {{#if isActive}}
+                                <span>Este página ya esta establecida como about</span>
+                            {{else}}
+                                <button class="btn btn-sm btn-outline-warning">Establecer plantilla como página de about</button>
+                            {{/if}}
+                        </form>  
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+        
+    </table>
+    {{else}}
+        <h2 class="text-center text-white">No hay plantillas guardadas aún</h2>
+    {{/if}}
+</div>

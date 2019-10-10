@@ -1,1 +1,37 @@
-<h1>Todos los Post's</h1>
+<div class="container">
+    <div class="alert text-center">
+        <h1 class="mb-5 p-3 text-center text-white">Todos los Post's</h1>
+    </div>
+
+    <table class="table table-bordered">
+        <thead class="bg-dark">
+            <tr class="text-white text-center">
+                <th><h3>Título</h3></th>
+                <th><h3>Autor</h3></th>
+                <th><h3>Categoría</h3></th>
+                <th><h3>Permitir Comentarios</h3></th>
+                <th><h3>Fecha de Creación</h3></th>
+                <th><h3>Acciones</h3></th>
+            </tr>
+        </thead>
+        <tbody class="text-center text-white">
+            {{#each posts}}
+                <tr>
+                    <td>{{title}}</td>
+                    <td>{{user}}</td>
+                    <td>{{category.title}}</td>
+                    <td>{{allowComments}}</td>
+                    <td>{{creationDate}}</td>
+                    <td class="d-flex">
+                        <a href="/admin/posts/edit/{{_id}}" class="btn btn-sm btn-outline-warning mr-2">Editar Post</a>
+
+                        <form action="/admin/posts/delete/{{_id}}?newMethod=DELETE" method="POST">
+                            <button class="btn btn-sm btn-danger">Eliminar Post</button>
+                        </form>
+                    </td>
+                </tr>
+            {{/each}}
+            
+        </tbody>
+    </table>
+</div>

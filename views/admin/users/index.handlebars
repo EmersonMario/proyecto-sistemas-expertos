@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="container">
+        <h1 class="mb-5 mt-5">Administración de Usuarios</h1>
+        <div class="col-md-12">
+            <table class="table table-bordered text-center text-white table-striped">
+                <thead class="bg-dark">
+                    <tr>
+                        <th><h3>Nombre Completo</h3></th>
+                        <th><h3>Correo electrónico</h3></th>
+                        <th><h3>Administrador</h3></th>
+                        <th><h3>Acciones</h3></th>
+                    </tr>
+                </thead>
+                <tbody class="text-white text-center">
+                    {{#each users}}
+                        <tr>
+                            <td style="width: auto;">{{firstName}} {{lastName}}</td>
+                            <td>{{email}}</td>
+                            <td>{{isAdmin}}</td>
+                            <td >
+                                <form action="/admin/user/edit/{{id}}?newMethod=PUT" method="POST">
+                                    {{#if isAdmin}}
+                                        <span>Este usuario ya es administrador</span>
+                                    {{else}}
+                                        <button class="btn btn-sm btn-outline-warning">Convertir en Administrador</button>
+                                    {{/if}}
+                                    
+                                </form>
+                                
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
